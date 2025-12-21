@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootContacts"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    tools:context="activities.Activity_Contacts">
+
+    <!-- REUSABLE TOP APP BAR -->
+    <include
+        android:id="@+id/includeToolbar"
+        layout="@layout/top_app_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- SCREEN TITLE -->
+    <TextView
+        android:id="@+id/tvContactsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="20dp"
+        android:text="Emergency Contacts"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/textPrimary"
+        android:fontFamily="@font/inter_bold"
+        app:layout_constraintTop_toBottomOf="@id/includeToolbar"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- SCROLLABLE CONTACT LIST -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollContacts"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintTop_toBottomOf="@id/tvContactsTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/includeBottomNav">
+
+        <LinearLayout
+            android:id="@+id/layoutContactsList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingBottom="16dp">
+
+            <!-- CONTACT CARD 1 -->
+            <LinearLayout
+                android:id="@+id/cardContact1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/bg_status_card"
+                android:elevation="6dp"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <!-- Avatar -->
+                <FrameLayout
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_gravity="center_vertical">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_avatar_circle" />
+
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="TODO"
+                        android:src="@drawable/ic_person_24dp"
+                        app:tint="@android:color/white" />
+                </FrameLayout>
+
+                <!-- Name + Phone -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="16dp"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvName1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Daler Ali"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/textPrimary" />
+
+                    <TextView
+                        android:id="@+id/tvPhone1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="+92 300 1234567"
+                        android:textSize="14sp"
+                        android:textColor="@color/textSecondary" />
+                </LinearLayout>
+
+                <!-- Edit icon -->
+                <ImageView
+                    android:id="@+id/btnEdit1"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_edit_24dp"
+                    app:tint="@color/veryDarkBlue" />
+
+                <!-- Delete icon -->
+                <ImageView
+                    android:id="@+id/btnDelete1"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_delete_24dp"
+                    app:tint="@color/veryDarkRed" />
+            </LinearLayout>
+
+            <!-- CONTACT CARD 2 -->
+            <LinearLayout
+                android:id="@+id/cardContact2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/bg_status_card"
+                android:elevation="6dp"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <FrameLayout
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_gravity="center_vertical">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_avatar_circle" />
+
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_person_24dp"
+                        app:tint="@android:color/white" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="16dp"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvName2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mujtaba Hasnain"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/textPrimary" />
+
+                    <TextView
+                        android:id="@+id/tvPhone2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="+92 300 1234567"
+                        android:textSize="14sp"
+                        android:textColor="@color/textSecondary" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/btnEdit2"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_edit_24dp"
+                    app:tint="@color/colorPrimary" />
+
+                <ImageView
+                    android:id="@+id/btnDelete2"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_delete_24dp"
+                    app:tint="@color/colorAccent" />
+            </LinearLayout>
+
+            <!-- CONTACT CARD 3 -->
+            <LinearLayout
+                android:id="@+id/cardContact3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/bg_status_card"
+                android:elevation="6dp"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <FrameLayout
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_gravity="center_vertical">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_avatar_circle" />
+
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_person_24dp"
+                        app:tint="@android:color/white" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="16dp"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvName3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Dost Muhammad"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/textPrimary" />
+
+                    <TextView
+                        android:id="@+id/tvPhone3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="+92 300 1234567"
+                        android:textSize="14sp"
+                        android:textColor="@color/textSecondary" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/btnEdit3"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_edit_24dp"
+                    app:tint="@color/colorPrimary" />
+
+                <ImageView
+                    android:id="@+id/btnDelete3"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_delete_24dp"
+                    app:tint="@color/colorAccent" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- CENTER-DOCKED ADD CONTACT FAB -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="Add new contact"
+        app:srcCompat="@drawable/ic_add_24dp"
+        app:tint="@android:color/white"
+        app:backgroundTint="@color/colorPrimary"
+        app:elevation="8dp"
+        app:maxImageSize="28dp"
+        app:layout_constraintBottom_toTopOf="@id/includeBottomNav"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- REUSABLE BOTTOM NAV -->
+    <include
+        android:id="@+id/includeBottomNav"
+        layout="@layout/bottom_nav"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

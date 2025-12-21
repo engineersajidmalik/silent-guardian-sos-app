@@ -1,0 +1,55 @@
+<resources>
+    <!-- Brand -->
+    <color name="colorPrimary">#3949AB</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#E53935</color>
+    <color name="veryDarkBlue">#0D47A1</color>
+    <color name="veryDarkRed">#B71C1C</color>
+
+    <color name="emergency_red">#D50000</color>
+
+    <!-- Backgrounds -->
+    <color name="colorBackground">#FAFAFA</color>
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+
+    <!-- Text -->
+    <color name="textPrimary">#212121</color>
+    <color name="textSecondary">#424242</color>
+    <color name="textOnPrimary">#FFFFFF</color>
+    <color name="sosTextColor">#B71C1C</color>  <!-- dark red -->
+
+    <!-- Status colors -->
+    <color name="statusGps">#43A047</color>     <!-- green -->
+    <color name="statusNetwork">#FB8C00</color> <!-- orange -->
+
+    <!-- SOS button glow colors -->
+    <color name="sosInnerRed">#D50000</color>
+    <color name="sosOuterRed">#EF5350</color>
+    <color name="sosGlow">#FFF3E0E0</color> <!-- very light pink glow -->
+
+    <color name="colorSecondary">#546E7A</color>
+
+    <color name="messagePreviewBackground">#F5F7FA</color>
+    <color name="messagePreviewBorder">#E0E0E0</color>
+
+    <color name="colorError">#FF3B30</color>
+
+    <color name="colorPrimaryLight">#B3FF5722</color>
+    <color name="dividerColor">#33000000</color>
+
+    <!-- Dark theme colors -->
+    <color name="dark_primary">#BB86FC</color>
+    <color name="dark_primary_variant">#3700B3</color>
+    <color name="dark_secondary">#03DAC5</color>
+    <color name="dark_background">#121212</color>
+    <color name="dark_surface">#1E1E1E</color>
+    <color name="dark_on_primary">#000000</color>
+    <color name="dark_on_secondary">#000000</color>
+
+
+
+
+
+</resources>

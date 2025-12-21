@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    tools:context="activities.Activity_Help">
+
+    <!-- REUSABLE TOP APP BAR -->
+    <include
+        android:id="@+id/includeToolbar"
+        layout="@layout/top_app_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- HELP TITLE -->
+    <TextView
+        android:id="@+id/tvHelpTitle"
+        style="@style/TextAppearance.SilentGuardian.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:text="Help and Support"
+        android:textColor="@color/textPrimary"
+        app:layout_constraintTop_toBottomOf="@id/includeToolbar"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- SCROLL VIEW FOR HELP CONTENT -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:paddingBottom="80dp"
+        app:layout_constraintTop_toBottomOf="@id/tvHelpTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- QUICK START GUIDE SECTION -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_status_card"
+                android:elevation="4dp"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Section Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="12dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginEnd="12dp"
+                        android:src="@drawable/ic_help_24dp"
+                        app:tint="@color/colorPrimary" />
+
+                    <TextView
+                        style="@style/TextAppearance.SilentGuardian.Subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Quick Start Guide"
+                        android:textColor="@color/textPrimary" />
+                </LinearLayout>
+
+                <!-- Guide Items -->
+                <TextView
+                    style="@style/TextAppearance.SilentGuardian.Body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="1. Add emergency contacts in Contacts screen"
+                    android:textColor="@color/textPrimary" />
+
+                <TextView
+                    style="@style/TextAppearance.SilentGuardian.Body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="2. Configure your SOS message in Settings"
+                    android:textColor="@color/textPrimary" />
+
+                <TextView
+                    style="@style/TextAppearance.SilentGuardian.Body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="3. Enable triggers (Shake/Power button) for quick activation"
+                    android:textColor="@color/textPrimary" />
+
+                <TextView
+                    style="@style/TextAppearance.SilentGuardian.Body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4. Press SOS button or use triggers in emergency"
+                    android:textColor="@color/textPrimary" />
+
+            </LinearLayout>
+
+            <!-- FAQ SECTION -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_status_card"
+                android:elevation="4dp"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Section Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="12dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginEnd="12dp"
+                        android:src="@drawable/ic_question_answer_24dp"
+                        app:tint="@color/colorPrimary" />
+
+                    <TextView
+                        style="@style/TextAppearance.SilentGuardian.Subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Frequently Asked Questions"
+                        android:textColor="@color/textPrimary" />
+                </LinearLayout>
+
+                <!-- FAQ Item 1 -->
+                <LinearLayout
+                    android:id="@+id/faqItem1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="12dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            style="@style/TextAppearance.SilentGuardian.Body"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="How does the SOS button work?"
+                            android:textColor="@color/textPrimary" />
+
+                        <ImageView
+                            android:id="@+id/ivFaqArrow1"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_expand_more"
+                            app:tint="@color/textSecondary" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvFaqAnswer1"
+                        style="@style/TextAppearance.SilentGuardian.Body"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:visibility="gone"
+                        android:text="When pressed, it sends your location and pre-configured message to all emergency contacts immediately."
+                        android:textColor="@color/textSecondary" />
+                </LinearLayout>
+
+                <!-- FAQ Item 2 -->
+                <LinearLayout
+                    android:id="@+id/faqItem2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="12dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            style="@style/TextAppearance.SilentGuardian.Body"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="What is Stealth Mode?"
+                            android:textColor="@color/textPrimary" />
+
+                        <ImageView
+                            android:id="@+id/ivFaqArrow2"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_expand_more"
+                            app:tint="@color/textSecondary" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvFaqAnswer2"
+                        style="@style/TextAppearance.SilentGuardian.Body"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:visibility="gone"
+                        android:text="Stealth Mode hides the app's interface and runs silently in background for discreet protection."
+                        android:textColor="@color/textSecondary" />
+                </LinearLayout>
+
+                <!-- FAQ Item 3 -->
+                <LinearLayout
+                    android:id="@+id/faqItem3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            style="@style/TextAppearance.SilentGuardian.Body"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="How many contacts can I add?"
+                            android:textColor="@color/textPrimary" />
+
+                        <ImageView
+                            android:id="@+id/ivFaqArrow3"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_expand_more"
+                            app:tint="@color/textSecondary" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvFaqAnswer3"
+                        style="@style/TextAppearance.SilentGuardian.Body"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:visibility="gone"
+                        android:text="You can add up to 5 emergency contacts to ensure your alerts reach multiple trusted people."
+                        android:textColor="@color/textSecondary" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- CONTACT SUPPORT SECTION -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_status_card"
+                android:elevation="4dp"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Section Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="12dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginEnd="12dp"
+                        android:src="@drawable/ic_support_24dp"
+                        app:tint="@color/colorPrimary" />
+
+                    <TextView
+                        style="@style/TextAppearance.SilentGuardian.Subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Contact Support"
+                        android:textColor="@color/textPrimary" />
+                </LinearLayout>
+
+                <!-- Email Support -->
+                <LinearLayout
+                    android:id="@+id/layoutEmailSupport"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="12dp"
+                        android:src="@drawable/ic_email_24dp"
+                        app:tint="@color/colorPrimary" />
+
+                    <TextView
+                        style="@style/TextAppearance.SilentGuardian.Body"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Email Support"
+                        android:textColor="@color/textPrimary" />
+
+                    <TextView
+                        style="@style/TextAppearance.SilentGuardian.Body"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="support@silentguardian.com"
+                        android:textColor="@color/textSecondary" />
+                </LinearLayout>
+
+                <!-- Website -->
+                <LinearLayout
+                    android:id="@+id/layoutWebsite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="12dp"
+                        android:src="@drawable/ic_web_24dp"
+                        app:tint="@color/colorPrimary" />
+
+                    <TextView
+                        style="@style/TextAppearance.SilentGuardian.Body"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Visit Website"
+                        android:textColor="@color/textPrimary" />
+
+                    <TextView
+                        style="@style/TextAppearance.SilentGuardian.Body"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="www.silentguardian.com"
+                        android:textColor="@color/textSecondary" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ABOUT APP SECTION -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_status_card"
+                android:elevation="4dp"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Section Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="12dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginEnd="12dp"
+                        android:src="@drawable/ic_info_24dp"
+                        app:tint="@color/colorPrimary" />
+
+                    <TextView
+                        style="@style/TextAppearance.SilentGuardian.Subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="About Silent Guardian"
+                        android:textColor="@color/textPrimary" />
+                </LinearLayout>
+
+                <!-- App Description -->
+                <TextView
+                    style="@style/TextAppearance.SilentGuardian.Body"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:text="Silent Guardian is a personal safety app designed to provide quick emergency alerts to your trusted contacts with just one tap or trigger."
+                    android:textColor="@color/textPrimary"
+                    android:lineSpacingExtra="4dp" />
+
+                <!-- App Version -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        style="@style/TextAppearance.SilentGuardian.Body"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="App Version"
+                        android:textColor="@color/textPrimary" />
+
+                    <TextView
+                        android:id="@+id/tvAppVersion"
+                        style="@style/TextAppearance.SilentGuardian.Body"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1.0.0"
+                        android:textColor="@color/textSecondary" />
+                </LinearLayout>
+
+                <!-- Build Number -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        style="@style/TextAppearance.SilentGuardian.Body"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Build Number"
+                        android:textColor="@color/textPrimary" />
+
+                    <TextView
+                        android:id="@+id/tvBuildNumber"
+                        style="@style/TextAppearance.SilentGuardian.Body"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2023.12.001"
+                        android:textColor="@color/textSecondary" />
+                </LinearLayout>
+
+                <!-- Developer Info -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        style="@style/TextAppearance.SilentGuardian.Body"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Developed By"
+                        android:textColor="@color/textPrimary" />
+
+                    <TextView
+                        style="@style/TextAppearance.SilentGuardian.Body"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Muhammad Sajid"
+                        android:textColor="@color/textSecondary" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- REUSABLE BOTTOM NAV -->
+    <include
+        android:id="@+id/includeBottomNav"
+        layout="@layout/bottom_nav"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

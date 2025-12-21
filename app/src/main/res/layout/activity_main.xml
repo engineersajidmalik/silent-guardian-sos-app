@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    tools:context="activities.MainActivity">
+
+    <!-- REUSABLE TOP APP BAR -->
+    <include
+        android:id="@+id/includeToolbar"
+        layout="@layout/top_app_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- STEALTH MODE ROW -->
+    <LinearLayout
+        android:id="@+id/layoutStealth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/includeToolbar"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/tvStealthLabel"
+            style="@style/TextAppearance.SilentGuardian.Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stealth Mode:"
+            android:textColor="@color/textPrimary" />
+
+        <TextView
+            android:id="@+id/tvStealthStatus"
+            style="@style/TextAppearance.SilentGuardian.Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OFF"
+            android:layout_marginStart="4dp" />
+
+        <Space
+            android:layout_width="8dp"
+            android:layout_height="1dp" />
+
+        <!-- Material Switch for better UI -->
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchStealth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp" />
+    </LinearLayout>
+
+    <!-- EMERGENCY SOS BUTTON (CLEAN VERSION) -->
+    <FrameLayout
+        android:id="@+id/sosContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:hapticFeedbackEnabled="true"
+        android:soundEffectsEnabled="true"
+        android:contentDescription="Emergency SOS button"
+        app:layout_constraintTop_toBottomOf="@id/layoutStealth"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="ExtraText">
+
+        <!-- Outer glowing circle -->
+        <View
+            android:id="@+id/sosOuterCircle"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_sos_outer"
+            android:elevation="8dp" />
+
+        <!-- Inner solid red circle -->
+        <View
+            android:id="@+id/sosInnerCircle"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_sos_inner"
+            android:elevation="12dp" />
+
+        <!-- SOS label -->
+        <TextView
+            android:id="@+id/tvSOS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="SOS"
+            android:textColor="@android:color/white"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:shadowColor="#990000"
+            android:shadowDx="0"
+            android:shadowDy="2"
+            android:shadowRadius="4"
+            android:elevation="16dp" />
+    </FrameLayout>
+
+    <!-- TAP INSTRUCTIONS -->
+    <TextView
+        android:id="@+id/tvTapInstructions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Tap for emergency alert • Long press for test"
+        android:textSize="14sp"
+        android:textColor="@color/textSecondary"
+        app:layout_constraintTop_toBottomOf="@id/sosContainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- GPS STATUS CARD -->
+    <LinearLayout
+        android:id="@+id/cardGps"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/bg_status_card"
+        android:elevation="4dp"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:layout_constraintTop_toBottomOf="@id/tvTapInstructions"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <View
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="12dp"
+            android:background="@color/statusGps" />
+
+        <TextView
+            android:id="@+id/tvGpsStatus"
+            style="@style/TextAppearance.SilentGuardian.StatusTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GPS Status: Ready" />
+    </LinearLayout>
+
+    <!-- EMERGENCY CONTACTS CARD -->
+    <LinearLayout
+        android:id="@+id/cardContacts"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_status_card"
+        android:elevation="4dp"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:layout_constraintTop_toBottomOf="@id/cardGps"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="12dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_contacts_24dp"
+            app:tint="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/tvContactsStatus"
+            style="@style/TextAppearance.SilentGuardian.StatusTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Emergency Contacts: 3 Added" />
+    </LinearLayout>
+
+    <!-- NETWORK STATUS CARD -->
+    <LinearLayout
+        android:id="@+id/cardNetwork"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_status_card"
+        android:elevation="4dp"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:layout_constraintTop_toBottomOf="@id/cardContacts"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="12dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_network_cell_24dp"
+            app:tint="@color/statusNetwork" />
+
+        <TextView
+            android:id="@+id/tvNetworkStatus"
+            style="@style/TextAppearance.SilentGuardian.StatusTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Network: SMS Ready" />
+    </LinearLayout>
+
+    <!-- TRIGGER SETTINGS CARD -->
+    <LinearLayout
+        android:id="@+id/cardTriggers"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/bg_status_card"
+        android:elevation="4dp"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@id/cardNetwork"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Card Title -->
+        <TextView
+            style="@style/TextAppearance.SilentGuardian.StatusTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quick Triggers"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Volume Button Trigger Row -->
+        <LinearLayout
+            android:id="@+id/volumeTriggerRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="12dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="12dp"
+                android:contentDescription="Volume button trigger"
+                android:src="@drawable/ic_volume_down_24dp"
+                app:tint="@color/colorPrimary" />
+
+            <TextView
+                style="@style/TextAppearance.SilentGuardian.Body"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Volume Button Trigger" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switchVolume"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <!-- Shake Detection Trigger Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="12dp"
+                android:contentDescription="Shake detection trigger"
+                android:src="@drawable/ic_vibration_24dp"
+                app:tint="@color/colorPrimary" />
+
+            <TextView
+                style="@style/TextAppearance.SilentGuardian.Body"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Shake Detection" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switchShake"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- SPACE BETWEEN CARD TRIGGERS AND BOTTOM NAV -->
+    <Space
+        android:id="@+id/spaceBottom"
+        android:layout_width="0dp"
+        android:layout_height="24dp"
+        app:layout_constraintTop_toBottomOf="@id/cardTriggers"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/includeBottomNav" />
+
+    <!-- REUSABLE BOTTOM NAV -->
+    <include
+        android:id="@+id/includeBottomNav"
+        layout="@layout/bottom_nav"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintTop_toBottomOf="@id/spaceBottom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottomNav"
+    android:layout_width="match_parent"
+    android:layout_height="72dp"
+    android:background="@drawable/bg_bottom_nav"
+    android:baselineAligned="false"
+    android:orientation="horizontal"
+    android:paddingHorizontal="24dp"
+    android:gravity="center_vertical">
+
+    <!-- Contacts -->
+    <LinearLayout
+        android:id="@+id/navContacts"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="TODO"
+            android:src="@drawable/ic_contacts_24dp"
+            app:tint="@android:color/white" />
+
+        <TextView
+            style="@style/TextAppearance.SilentGuardian.BottomNav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contacts" />
+    </LinearLayout>
+
+    <!-- Settings -->
+    <LinearLayout
+        android:id="@+id/navSettings"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="TODO"
+            android:src="@drawable/ic_setting_24dp"
+            app:tint="@android:color/white" />
+
+        <TextView
+            style="@style/TextAppearance.SilentGuardian.BottomNav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Settings" />
+    </LinearLayout>
+
+    <!-- Help -->
+    <LinearLayout
+        android:id="@+id/navHelp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="TODO"
+            android:src="@drawable/ic_help_24dp"
+            app:tint="@android:color/white" />
+
+        <TextView
+            style="@style/TextAppearance.SilentGuardian.BottomNav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Help" />
+    </LinearLayout>
+
+</LinearLayout>

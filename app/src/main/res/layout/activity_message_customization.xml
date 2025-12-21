@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootMessage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    tools:context="activities.Activity_Message_Customization">
+
+    <!-- REUSABLE TOP APP BAR -->
+    <include
+        android:id="@+id/includeToolbar"
+        layout="@layout/top_app_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- SCREEN TITLE -->
+    <TextView
+        android:id="@+id/tvMessageTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="20dp"
+        android:text="SOS Message"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/textPrimary"
+        app:layout_constraintTop_toBottomOf="@id/includeToolbar"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- SCROLL VIEW FOR CONTENT -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollMessage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintTop_toBottomOf="@id/tvMessageTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/includeBottomNav">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingBottom="24dp">
+
+            <!-- DEFAULT MESSAGE CARD -->
+            <LinearLayout
+                android:id="@+id/cardDefaultMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_status_card"
+                android:elevation="4dp"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Default Message"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/textPrimary"
+                    android:layout_marginBottom="12dp" />
+
+                <TextView
+                    android:id="@+id/tvDefaultMessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="🚨 EMERGENCY! I need help!\n📍 Location: {LOCATION}\n📱 Contact me ASAP!"
+                    android:textSize="14sp"
+                    android:textColor="@color/textSecondary"
+                    android:lineSpacingExtra="4dp"
+                    android:layout_marginBottom="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Available Variables:"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/textPrimary"
+                    android:layout_marginBottom="8dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="4dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="• {LOCATION} "
+                        android:textSize="12sp"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Your GPS coordinates"
+                        android:textSize="12sp"
+                        android:textColor="@color/textSecondary" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="• {TIME} "
+                        android:textSize="12sp"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Current time"
+                        android:textSize="12sp"
+                        android:textColor="@color/textSecondary" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- CUSTOM MESSAGE CARD -->
+            <LinearLayout
+                android:id="@+id/cardCustomMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_status_card"
+                android:elevation="4dp"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Custom Message"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/textPrimary"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- Character Counter -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Enter your custom message:"
+                        android:textSize="14sp"
+                        android:textColor="@color/textSecondary" />
+
+                    <TextView
+                        android:id="@+id/tvCharCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0/160"
+                        android:textSize="12sp"
+                        android:textColor="@color/textSecondary" />
+                </LinearLayout>
+
+                <!-- Custom Message Input -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilCustomMessage"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Type your SOS message here"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="160"
+                    app:boxBackgroundMode="outline"
+                    app:boxStrokeColor="@color/colorPrimary"
+                    app:hintTextColor="@color/textSecondary"
+                    app:endIconMode="clear_text"
+                    android:layout_marginBottom="16dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etCustomMessage"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:gravity="top|start"
+                        android:inputType="textMultiLine|textCapSentences"
+                        android:maxLines="5"
+                        android:text="🚨 EMERGENCY! I need help!\n📍 Location: {LOCATION}\n📱 Contact me ASAP!"
+                        android:textSize="14sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Use Custom Message Switch -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Use Custom Message"
+                        android:textSize="14sp"
+                        android:textColor="@color/textPrimary" />
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switchUseCustom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- LOCATION SETTINGS CARD -->
+            <LinearLayout
+                android:id="@+id/cardLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_status_card"
+                android:elevation="4dp"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Location Format"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/textPrimary"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- Location Format Options -->
+                <RadioGroup
+                    android:id="@+id/rgLocationFormat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="12dp">
+
+                        <RadioButton
+                            android:id="@+id/rbCoordinates"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            app:buttonTint="@color/colorPrimary" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_marginStart="12dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="GPS Coordinates"
+                                android:textSize="14sp"
+                                android:textColor="@color/textPrimary" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Lat: 31.5204, Long: 74.3587"
+                                android:textSize="12sp"
+                                android:textColor="@color/textSecondary" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <RadioButton
+                            android:id="@+id/rbGoogleMaps"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:buttonTint="@color/colorPrimary" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_marginStart="12dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Google Maps Link"
+                                android:textSize="14sp"
+                                android:textColor="@color/textPrimary" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="https://maps.google.com/?q=..."
+                                android:textSize="12sp"
+                                android:textColor="@color/textSecondary" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <!-- MESSAGE PREVIEW CARD -->
+            <LinearLayout
+                android:id="@+id/cardPreview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_status_card"
+                android:elevation="4dp"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Message Preview"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/textPrimary" />
+
+                    <TextView
+                        android:id="@+id/tvPreviewChars"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="160 chars"
+                        android:textSize="12sp"
+                        android:textColor="@color/textSecondary" />
+                </LinearLayout>
+
+                <!-- Preview Box -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_message_preview"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:layout_marginBottom="16dp">
+
+                    <TextView
+                        android:id="@+id/tvMessagePreview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="🚨 EMERGENCY! I need help!\n📍 Location: 31.5204, 74.3587\n📱 Contact me ASAP!"
+                        android:textSize="14sp"
+                        android:textColor="@color/textPrimary"
+                        android:lineSpacingExtra="4dp" />
+
+                </LinearLayout>
+
+                <!-- Message Parts Counter -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Parts: 1"
+                        android:textSize="12sp"
+                        android:textColor="@color/textSecondary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SMS (160 chars per part)"
+                        android:textSize="12sp"
+                        android:textColor="@color/textSecondary" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- TEST BUTTON -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnTestMessage"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="24dp"
+                android:text="Test Message"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:icon="@drawable/ic_send_24dp"
+                app:iconTint="@android:color/white"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                app:cornerRadius="12dp"
+                app:backgroundTint="@color/colorPrimary"
+                android:elevation="4dp" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- REUSABLE BOTTOM NAV -->
+    <include
+        android:id="@+id/includeBottomNav"
+        layout="@layout/bottom_nav"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

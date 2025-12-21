@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootAddContact"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    tools:context="activities.Activity_Add_Contact">
+
+    <!-- REUSABLE TOP APP BAR -->
+    <include
+        android:id="@+id/includeToolbar"
+        layout="@layout/top_app_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- SCREEN TITLE WITH BACK BUTTON -->
+    <LinearLayout
+        android:id="@+id/titleLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintTop_toBottomOf="@id/includeToolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Back Button -->
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_arrow_back_24dp"
+            android:contentDescription="Back"
+            app:tint="@color/textPrimary" />
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="Add Contact"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@color/textPrimary"
+            android:fontFamily="@font/inter_bold" />
+
+    </LinearLayout>
+
+    <!-- SCROLLABLE FORM (WITHOUT SAVE BUTTON) -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/titleLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnSaveContact">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingBottom="16dp">
+
+            <!-- PROFILE PICTURE CARD -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="@color/colorSurface">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp"
+                    android:gravity="center">
+
+                    <!-- Avatar Circle -->
+                    <FrameLayout
+                        android:layout_width="100dp"
+                        android:layout_height="100dp">
+
+                        <!-- Large Avatar Background -->
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_avatar_circle_large" />
+
+                        <!-- CONTACT PHOTO IMAGEVIEW (NEW) -->
+                        <ImageView
+                            android:id="@+id/ivContactPhoto"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:visibility="gone" />
+
+                        <!-- Default Person Icon (shown when no photo) -->
+                        <ImageView
+                            android:id="@+id/ivDefaultPerson"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_person_24dp"
+                            app:tint="@color/white" />
+
+                        <!-- Camera Icon Overlay -->
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_gravity="bottom|end"
+                            android:src="@drawable/ic_add_a_photo_24dp"
+                            android:background="@drawable/bg_camera_overlay"
+                            android:padding="6dp"
+                            app:tint="@color/white" />
+
+                    </FrameLayout>
+
+                    <!-- Add Photo Text -->
+                    <TextView
+                        android:id="@+id/tvAddPhoto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="Add Photo"
+                        android:textSize="14sp"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- FORM FIELDS CARD -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="@color/colorSurface">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <!-- Full Name Field -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/inputLayoutName"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Full Name"
+                        app:startIconDrawable="@drawable/ic_person_spaced"
+                        app:startIconTint="@color/textSecondary"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="50"
+                        app:errorEnabled="true"
+                        app:boxStrokeColor="@color/colorPrimary"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusTopStart="12dp"
+                        tools:ignore="ExtraText">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etFullName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPersonName"
+                            android:maxLines="1"
+                            android:paddingStart="50dp"
+                            android:paddingEnd="8dp"
+                            android:paddingTop="12dp"
+                            android:paddingBottom="12dp"
+                            android:textColor="@color/textPrimary"
+                            tools:ignore="RtlSymmetry" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Phone Number Field -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/inputLayoutPhone"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:hint="Phone Number"
+                        app:startIconDrawable="@drawable/ic_phone_24dp"
+                        app:startIconTint="@color/textSecondary"
+                        app:errorEnabled="true"
+                        app:boxStrokeColor="@color/colorPrimary"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusTopStart="12dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etPhoneNumber"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="phone"
+                            android:digits="0123456789+()- "
+                            android:imeOptions="actionDone"
+                            android:maxLines="1"
+                            android:paddingStart="50dp"
+                            android:paddingEnd="8dp"
+                            android:paddingTop="12dp"
+                            android:paddingBottom="12dp"
+                            android:textColor="@color/textPrimary"
+                            tools:ignore="RtlSymmetry" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Relationship Dropdown -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/inputLayoutRelationship"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:hint="Relationship"
+                        app:startIconDrawable="@drawable/ic_group_24dp"
+                        app:startIconTint="@color/textSecondary"
+                        app:endIconMode="dropdown_menu"
+                        app:errorEnabled="true"
+                        app:boxStrokeColor="@color/colorPrimary"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusTopStart="12dp">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/actvRelationship"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none"
+                            android:text="Select Relationship"
+                            android:textColor="@color/textPrimary" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- SAVE BUTTON (FIXED POSITION - OUTSIDE SCROLL VIEW) -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSaveContact"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="16dp"
+        android:text="Save Contact"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:icon="@drawable/ic_save_24dp"
+        app:iconGravity="textStart"
+        app:iconTint="@color/white"
+        app:backgroundTint="@color/colorPrimary"
+        app:cornerRadius="12dp"
+        app:elevation="6dp"
+        app:layout_constraintBottom_toTopOf="@id/includeBottomNav"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- REUSABLE BOTTOM NAV -->
+    <include
+        android:id="@+id/includeBottomNav"
+        layout="@layout/bottom_nav"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

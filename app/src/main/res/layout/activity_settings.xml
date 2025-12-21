@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    tools:context="activities.Activity_Settings">
+
+    <!-- REUSABLE TOP APP BAR -->
+    <include
+        android:id="@+id/includeToolbar"
+        layout="@layout/top_app_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- SETTINGS TITLE -->
+    <TextView
+        android:id="@+id/tvSettingsTitle"
+        style="@style/TextAppearance.SilentGuardian.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:text="Settings"
+        android:textColor="@color/textPrimary"
+        app:layout_constraintTop_toBottomOf="@id/includeToolbar"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- SCROLL VIEW -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:paddingBottom="80dp"
+        app:layout_constraintTop_toBottomOf="@id/tvSettingsTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- APP PREFERENCES -->
+            <TextView
+                style="@style/TextAppearance.SilentGuardian.Subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="App Preferences"
+                android:textColor="@color/textPrimary" />
+
+            <!-- NOTIFICATIONS -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/bg_status_card"
+                android:elevation="4dp"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="center_vertical"
+                android:foreground="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/ic_notifications_24dp"
+                    app:tint="@color/colorPrimary" />
+
+                <TextView
+                    style="@style/TextAppearance.SilentGuardian.Body"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Notifications"
+                    android:textColor="@color/textPrimary" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/switchNotifications"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true" />
+            </LinearLayout>
+
+            <!-- AUTO SEND LOCATION -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/bg_status_card"
+                android:elevation="4dp"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="center_vertical"
+                android:foreground="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/ic_location_on_24dp"
+                    app:tint="@color/colorPrimary" />
+
+                <TextView
+                    style="@style/TextAppearance.SilentGuardian.Body"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Auto-send Location Updates"
+                    android:textColor="@color/textPrimary" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/switchLocationUpdates"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true" />
+            </LinearLayout>
+
+            <!-- QUICK TRIGGERS -->
+            <TextView
+                style="@style/TextAppearance.SilentGuardian.Subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="Quick Triggers"
+                android:textColor="@color/textPrimary" />
+
+            <!-- VOLUME BUTTON -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/bg_status_card"
+                android:elevation="4dp"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="center_vertical"
+                android:foreground="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/ic_volume_down_24dp"
+                    app:tint="@color/colorPrimary" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/TextAppearance.SilentGuardian.Body"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Volume Button Detection"
+                        android:textColor="@color/textPrimary" />
+
+                    <TextView
+                        style="@style/TextAppearance.SilentGuardian.Caption"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Press volume button 3 times quickly"
+                        android:textColor="@color/textSecondary"
+                        android:layout_marginTop="4dp" />
+                </LinearLayout>
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/switchVolumeButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <!-- SHAKE DETECTION -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/bg_status_card"
+                android:elevation="4dp"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="center_vertical"
+                android:foreground="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/ic_vibration_24dp"
+                    app:tint="@color/colorPrimary" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/TextAppearance.SilentGuardian.Body"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Shake Detection"
+                        android:textColor="@color/textPrimary" />
+
+                    <TextView
+                        style="@style/TextAppearance.SilentGuardian.Caption"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Shake phone 2-3 times to trigger emergency"
+                        android:textColor="@color/textSecondary"
+                        android:layout_marginTop="4dp" />
+                </LinearLayout>
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/switchShakeDetection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <!-- SHAKE SENSITIVITY (Only shown when shake detection is ON) -->
+            <LinearLayout
+                android:id="@+id/layoutShakeSensitivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/bg_status_card"
+                android:elevation="4dp"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="center_vertical"
+                android:foreground="?attr/selectableItemBackground"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/ic_setting_24dp"
+                    app:tint="@color/colorPrimary" />
+
+                <TextView
+                    style="@style/TextAppearance.SilentGuardian.Body"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Shake Sensitivity"
+                    android:textColor="@color/textPrimary" />
+
+                <TextView
+                    android:id="@+id/tvShakeSensitivity"
+                    style="@style/TextAppearance.SilentGuardian.Body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Medium"
+                    android:textColor="@color/textSecondary"
+                    android:layout_marginEnd="8dp" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_chevron_right_24dp"
+                    app:tint="@color/textSecondary" />
+            </LinearLayout>
+
+            <!-- SOS CONFIG -->
+            <TextView
+                style="@style/TextAppearance.SilentGuardian.Subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="Emergency Sending Options"
+                android:textColor="@color/textPrimary" />
+
+            <!-- SMS ENABLE -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_status_card"
+                android:elevation="4dp"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/ic_message_24dp"
+                    app:tint="@color/colorPrimary" />
+
+                <TextView
+                    style="@style/TextAppearance.SilentGuardian.Body"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Send SMS Automatically"
+                    android:textColor="@color/textPrimary" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/switchSendSMS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true" />
+            </LinearLayout>
+
+            <!-- SOS MESSAGE -->
+            <LinearLayout
+                android:id="@+id/sosMessageSetting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/bg_status_card"
+                android:elevation="4dp"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/ic_message_24dp"
+                    app:tint="@color/colorPrimary" />
+
+                <TextView
+                    style="@style/TextAppearance.SilentGuardian.Body"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="SOS Message"
+                    android:textColor="@color/textPrimary" />
+
+                <TextView
+                    style="@style/TextAppearance.SilentGuardian.Body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Edit"
+                    android:textColor="@color/textSecondary"
+                    android:layout_marginEnd="8dp" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_chevron_right_24dp"
+                    app:tint="@color/textSecondary" />
+            </LinearLayout>
+
+            <!-- PRIVACY & SECURITY -->
+            <TextView
+                style="@style/TextAppearance.SilentGuardian.Subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="Privacy and Security"
+                android:textColor="@color/textPrimary" />
+
+            <!-- APP LOCK -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/bg_status_card"
+                android:elevation="4dp"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="center_vertical"
+                android:foreground="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/ic_lock_24dp"
+                    app:tint="@color/colorPrimary" />
+
+                <TextView
+                    style="@style/TextAppearance.SilentGuardian.Body"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="App Lock"
+                    android:textColor="@color/textPrimary" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/switchAppLock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <!-- APP INFO -->
+            <TextView
+                style="@style/TextAppearance.SilentGuardian.Subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="App Information"
+                android:textColor="@color/textPrimary" />
+
+            <!-- VERSION -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/bg_status_card"
+                android:elevation="4dp"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/ic_info_24dp"
+                    app:tint="@color/colorPrimary" />
+
+                <TextView
+                    style="@style/TextAppearance.SilentGuardian.Body"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Version"
+                    android:textColor="@color/textPrimary" />
+
+                <TextView
+                    android:id="@+id/tvAppVersion"
+                    style="@style/TextAppearance.SilentGuardian.Body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1.0.0"
+                    android:textColor="@color/textSecondary" />
+            </LinearLayout>
+
+            <!-- RESET -->
+            <LinearLayout
+                android:id="@+id/layoutReset"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_status_card"
+                android:elevation="4dp"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/ic_reset_24dp"
+                    app:tint="@color/colorError" />
+
+                <TextView
+                    style="@style/TextAppearance.SilentGuardian.Body"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Reset All Settings"
+                    android:textColor="@color/colorError" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- BOTTOM NAV -->
+    <include
+        android:id="@+id/includeBottomNav"
+        layout="@layout/bottom_nav"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

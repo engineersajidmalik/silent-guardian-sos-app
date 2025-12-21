@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- ========== ESSENTIAL PERMISSIONS ========== -->
+
+    <!-- SMS Permissions -->
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
+    <!-- Location Permissions -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- Foreground Service Permissions -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+
+    <!-- Overlay Permission (for emergency countdown dialog) -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <!-- Network Permissions -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <!-- Boot/Startup Permission -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!-- Camera Permissions (Added) -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- FOREGROUND_SERVICE_CAMERA only available from Android 14 (API 34) -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CAMERA" />
+
+    <!-- Power Management -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+
+    <!-- Optional: For testing and future features -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- CRITICAL: Accessibility Service Permission -->
+    <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE"
+        tools:ignore="ProtectedPermissions" />
+
+    <!-- Storage permissions for saving photos/videos (Optional for future features) -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+
+    <!-- Audio permission for video recording (Optional for future features) -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <!-- ========== HARDWARE FEATURES ========== -->
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
+    <!-- Camera Features (Added) -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.flash"
+        android:required="false" />
+
+    <!-- ========== APPLICATION ========== -->
+    <application
+        android:icon="@mipmap/ic_launcher"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SilentGuardian"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+
+        <!-- ========== ACTIVITIES ========== -->
+
+        <activity
+            android:name="activities.MainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:showWhenLocked="true"
+            android:turnScreenOn="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="activities.Activity_Contacts" />
+        <activity android:name="activities.Activity_Add_Contact" />
+        <activity android:name="activities.Activity_Message_Customization" />
+        <activity android:name="activities.Activity_Settings" />
+        <activity android:name="activities.Activity_Help" />
+        <activity android:name="activities.WebViewActivity" />
+
+        <!-- ========== SERVICES ========== -->
+
+        <service
+            android:name="services.EmergencyService"
+            android:exported="false"
+            android:foregroundServiceType="location" />
+
+        <service
+            android:name="services.LocationService"
+            android:exported="false"
+            android:foregroundServiceType="location" />
+
+        <service
+            android:name="services.SMSService"
+            android:exported="false" />
+
+        <!-- FIXED: VolumeButtonService - Removed conflicting service -->
+        <!-- The accessibility service handles volume button detection now -->
+
+        <!-- FIXED: Accessibility Service - Proper configuration -->
+        <service
+            android:name="services.AccessibilityButtonService"
+            android:exported="false"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_service_config" />
+        </service>
+
+        <service
+            android:name="services.ShakeDetectionService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="location" />
+
+        <!-- ========== RECEIVERS ========== -->
+
+        <!-- FIXED: Removed conflicting VolumeButtonReceiver -->
+        <!-- Accessibility service handles volume button detection directly -->
+
+        <receiver
+            android:name="receivers.BootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>

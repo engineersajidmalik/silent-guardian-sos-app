@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content xmlns:tools="http://schemas.android.com/tools">
+    <!-- Don't backup sensitive data -->
+    <exclude domain="sharedpref" path="SilentGuardianContacts.xml"
+        tools:ignore="FullBackupContent" />
+    <exclude domain="sharedpref" path="SilentGuardianData.xml"
+        tools:ignore="FullBackupContent" />
+    <exclude domain="sharedpref" path="SettingsPrefs.xml"
+        tools:ignore="FullBackupContent" />
+
+    <!-- Don't backup images -->
+    <exclude domain="file" path="Pictures/"
+        tools:ignore="FullBackupContent" />
+    <exclude domain="external" path="Android/data/com.example.silentguardian/Pictures/"
+        tools:ignore="FullBackupContent" />
+
+    <!-- Include app settings only -->
+    <include domain="sharedpref" path="app_settings.xml" />
+</full-backup-content>
