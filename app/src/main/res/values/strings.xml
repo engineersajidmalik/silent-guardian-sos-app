@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SilentGuardian</string>
+
+    <string name="default_message">🚨 EMERGENCY! I need help!\n📍 Location: {LOCATION}\n📱 Contact me ASAP!</string>
+
+    <string name="accessibility_service_description">Detects volume button presses for emergency alerts</string>
+</resources>

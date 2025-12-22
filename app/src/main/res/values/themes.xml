@@ -1,0 +1,29 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.SilentGuardian" parent="Theme.MaterialComponents.Light.NoActionBar">
+
+        <!-- Brand colors -->
+        <item name="colorPrimary">@color/colorPrimary</item>          <!-- App bar & bottom bar -->
+        <item name="colorPrimaryVariant">@color/colorPrimaryDark</item> <!-- Darker blue -->
+        <item name="colorOnPrimary">@color/textOnPrimary</item>
+
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorOnSecondary">@android:color/white</item>
+
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowTranslucentStatus">false</item>
+
+        <!-- Background -->
+        <item name="android:windowBackground">@color/colorBackground</item>
+
+        <!-- Typography hooks -->
+        <item name="textAppearanceHeadline6">@style/TextAppearance.SilentGuardian.Headline</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.SilentGuardian.Body</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.SilentGuardian.StatusTitle</item>
+
+        <!-- Default button style -->
+        <item name="materialButtonStyle">@style/Widget.SilentGuardian.Button.Primary</item>
+    </style>
+
+</resources>
