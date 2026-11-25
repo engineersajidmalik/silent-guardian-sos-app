@@ -7,8 +7,6 @@
 [![Android Studio](https://img.shields.io/badge/Android_Studio-3DDC84?style=for-the-badge&logo=android-studio&logoColor=white)](https://developer.android.com/studio)
 [![API](https://img.shields.io/badge/API-21%2B-brightgreen?style=for-the-badge)](https://developer.android.com/about/versions/android-5.0)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
-[![GitHub Stars](https://img.shields.io/github/stars/yourusername/silent-guardian-sos-app?style=for-the-badge&logo=github)](https://github.com/yourusername/silent-guardian-sos-app/stargazers)
-[![GitHub Issues](https://img.shields.io/github/issues/sajid-android-dev/silent-guardian-sos-app?style=for-the-badge&logo=github)](https://github.com/yourusername/silent-guardian-sos-app/issues)
 
 **A Privacy-First Emergency Response System for Android**  
 *Discreet. Reliable. Life-Saving.*
@@ -59,7 +57,7 @@
 ### Build & Run
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/silent-guardian-sos-app.git
+git clone https://github.com/engineersajidmalik/silent-guardian-sos-app.git
 cd silent-guardian-sos-app
 
 # Open in Android Studio
@@ -70,3 +68,32 @@ cd silent-guardian-sos-app
 
 # Install on device
 ./gradlew installDebug
+```
+
+## 📸 Screenshots
+
+<!-- Add 3-4 phone screenshots to docs/ and reference them here, e.g.
+<img src="docs/home.png" width="240"/> <img src="docs/countdown.png" width="240"/> -->
+
+## 🔐 Permissions
+
+| Permission | Why it is needed |
+|---|---|
+| Location | Include live GPS coordinates in the alert |
+| SMS | Send the emergency message to your contacts |
+| Accessibility service | Detect the volume-button trigger while the screen is off |
+| Foreground service | Keep shake detection alive in the background |
+
+## 🗺️ Roadmap
+
+- [ ] Add screenshots and a short demo video
+- [ ] Unit tests for trigger detection
+- [ ] Migrate to Kotlin and a ViewModel-based architecture
+
+## 📄 License
+
+Released under the [MIT License](LICENSE).
+
+## 👤 Author
+
+**Muhammad Sajid** — [LinkedIn](https://www.linkedin.com/in/muhammad-sajid-537518361)
